@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #game {
+            margin: 0 auto;
+            width: 300px;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+        #game p {
+            margin: 0;
+        }
+        #game button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <p>Guess a number between 1 and 10:</p>
+        <input type="number" id="guess" min="1" max="10">
+        <button onclick="checkGuess()">Submit</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        let randomNumber = Math.floor(Math.random() * 10) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            let guess = document.getElementById("guess").value;
+            attempts++;
+
+            if (guess == randomNumber) {
+                document.getElementById("result").textContent = "Congratulations! You guessed the correct number in " + attempts + " attempts.";
+            } else if (guess > randomNumber) {
+                document.getElementById("result").textContent = "Too high! Try again.";
+            } else {
+                document.getElementById("result").textContent = "Too low! Try again.";
+            }
+        }
+    </script>
+</body>
+</html>
